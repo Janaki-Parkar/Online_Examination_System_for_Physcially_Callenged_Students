@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Accessibility Settings</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/accessibility.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="box">
+
+        <h1>Accessibility Settings</h1>
+
+        <p>
+
+            Customize the examination interface according to your needs.
+
+        </p>
+
+        <form action="/save_accessibility" method="POST">
+
+            <div class="option">
+
+                <label>
+
+                    <input type="checkbox" name="voice">
+
+                    Enable Voice Assistance
+
+                </label>
+
+            </div>
+
+            <div class="option">
+
+                <label>
+
+                    <input type="checkbox" name="high_contrast">
+
+                    Enable High Contrast Mode
+
+                </label>
+
+            </div>
+
+            <div class="option">
+
+                <label>
+
+                    Font Size
+
+                </label>
+
+                <select name="font_size">
+
+                    <option value="small">Small</option>
+
+                    <option value="medium" selected>Medium</option>
+
+                    <option value="large">Large</option>
+
+                    <option value="extra_large">Extra Large</option>
+
+                </select>
+
+            </div>
+
+            <div class="option">
+
+                <label>
+
+                    Reading Speed
+
+                </label>
+
+                <select name="speech_speed">
+
+                    <option value="slow">Slow</option>
+
+                    <option value="normal" selected>Normal</option>
+
+                    <option value="fast">Fast</option>
+
+                </select>
+
+            </div>
+
+            <div class="buttons">
+
+                <button type="submit">
+
+                    Save Settings
+
+                </button>
+
+                <a href="/instructions">
+
+                    <button type="button">
+
+                        Back
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

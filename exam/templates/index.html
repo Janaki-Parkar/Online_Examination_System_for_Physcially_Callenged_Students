@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Online Examination System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+
+    <header>
+
+        <div class="logo">
+
+            Online Examination System
+
+        </div>
+
+        <nav>
+
+            <a href="/">Home</a>
+
+            <a href="/login">Login</a>
+
+            <a href="/register">Register</a>
+
+        </nav>
+
+    </header>
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <div class="left">
+
+            <h1>
+
+                Accessible Online Examination System
+
+            </h1>
+
+            <p>
+
+                A web-based examination platform designed for visually
+                impaired students with voice assistance, secure login,
+                live monitoring and machine learning based proctoring.
+
+            </p>
+
+            <a href="/register" class="btn">
+
+                Get Started
+
+            </a>
+
+        </div>
+
+        <div class="right">
+
+            <img src="{{ url_for('static', filename='images/exam.png') }}"
+                 alt="Exam Image">
+
+        </div>
+
+    </section>
+
+    <!-- Features -->
+
+    <section class="features">
+
+        <h2>Project Features</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Voice Assistance</h3>
+
+                <p>
+
+                    Reads questions aloud for visually impaired students.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Online Examination</h3>
+
+                <p>
+
+                    Secure online examination with timer and auto submit.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>ML Proctoring</h3>
+
+                <p>
+
+                    Detects suspicious activity using machine learning.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Online Examination System | MCA Major Project
+
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

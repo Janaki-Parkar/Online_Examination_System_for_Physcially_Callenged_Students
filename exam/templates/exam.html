@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Online Examination</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/exam.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h2>Online Examination System</h2>
+
+    <div id="timer">
+
+        Time Left :
+        <span id="time">30:00</span>
+
+    </div>
+
+</header>
+
+<div class="container">
+
+    <div class="top">
+
+        <h3>
+
+            Welcome,
+            {{ session['student_name'] }}
+
+        </h3>
+
+        <p id="progress">
+
+            Question
+            <span id="currentQuestion">1</span>
+            of
+            {{ questions|length }}
+
+        </p>
+
+    </div>
+
+    <div class="camera-container">
+
+    <h3>Live Monitoring</h3>
+
+    <video
+        id="video"
+        autoplay
+        muted
+        playsinline>
+    </video>
+
+    <canvas
+        id="canvas"
+        style="display:none;">
+    </canvas>
+
+    <p id="cameraStatus">
+
+        Camera Starting...
+
+    </p>
+
+    </div>
+
+    <div class="warning-box">
+
+    <h3>Exam Monitoring</h3>
+
+    <p id="monitorStatus">
+
+        Monitoring Started...
+
+    </p>
+
+    </div>
+    <form
+        id="examForm"
+        action="/submit"
+        method="POST">
+
+        {% for q in questions %}
+
+        <div
+            class="question-box"
+            id="question{{ loop.index0 }}">
+
+            <h2>
+
+                Question {{ loop.index }}
+
+            </h2>
+
+            <p class="question-text">
+
+                {{ q.question }}
+
+            </p>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q{{ q.question_id }}"
+                    value="A">
+
+                {{ q.option_a }}
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q{{ q.question_id }}"
+                    value="B">
+
+                {{ q.option_b }}
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q{{ q.question_id }}"
+                    value="C">
+
+                {{ q.option_c }}
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q{{ q.question_id }}"
+                    value="D">
+
+                {{ q.option_d }}
+
+            </label>
+
+        </div>
+
+        {% endfor %}
+
+    </form>
+
+    <div class="status">
+
+        <h3>
+
+            Voice Assistant
+
+        </h3>
+
+        <p id="voiceStatus">
+
+            Waiting for command...
+
+        </p>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static',
+filename='js/exam.js') }}"></script>
+
+<script src="{{ url_for('static',
+filename='js/voice_assistant.js') }}"></script>
+
+<script src="{{ url_for('static',
+filename='js/camera.js') }}"></script>
+
+<script>
+
+const studentName="{{ session['student_name'] }}";
+
+
+window.onload = function(){
+
+    initializeExam();
+
+    startVoice();
+
+    startCamera();
+
+    setTimeout(function(){
+
+        readCurrentQuestion();
+
+    },1000);
+
+};
+</script>
+
+</body>
+
+</html>

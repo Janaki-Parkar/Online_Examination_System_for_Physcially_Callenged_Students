@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Exam Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/result.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="result-box">
+
+        <h1>Online Examination Result</h1>
+
+        <h2>Congratulations {{ session['student_name'] }}</h2>
+
+        <p>Your examination has been completed successfully.</p>
+
+        <table>
+
+            <tr>
+                <th>Student Name</th>
+                <td>{{ session['student_name'] }}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ session['student_email'] }}</td>
+            </tr>
+
+            <tr>
+                <th>Total Questions</th>
+                <td>{{ total }}</td>
+            </tr>
+
+            <tr>
+                <th>Correct Answers</th>
+                <td>{{ score }}</td>
+            </tr>
+
+            <tr>
+                <th>Wrong Answers</th>
+                <td>{{ total - score }}</td>
+            </tr>
+
+            <tr>
+                <th>Score</th>
+                <td>{{ score }}/{{ total }}</td>
+            </tr>
+
+            <tr>
+                <th>Percentage</th>
+                <td>{{ (score/total*100)|round(2) }}%</td>
+            </tr>
+
+            <tr>
+                <th>Result</th>
+                <td>
+                    {% if (score/total*100) >= 40 %}
+                        PASS
+                    {% else %}
+                        FAIL
+                    {% endif %}
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="buttons">
+
+            <a href="/dashboard">
+                <button>Dashboard</button>
+            </a>
+
+            <a href="/logout">
+                <button>Logout</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
